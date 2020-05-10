@@ -35,7 +35,7 @@ func (h *rssHandler) FetchRssFeedsItems(ctx *fasthttp.RequestCtx) {
 	}
 
 	urls := []string{}
-	dataBytes := ctx.QueryArgs().PeekMulti("urls")
+	dataBytes := ctx.QueryArgs().PeekMulti("urls[]")
 	for _, data := range dataBytes {
 		urls = append(urls, string(data))
 	}
