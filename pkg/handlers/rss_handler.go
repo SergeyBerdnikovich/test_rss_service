@@ -56,7 +56,7 @@ func (h *rssHandler) FetchRssFeedsItems(ctx *fasthttp.RequestCtx) {
 
 func respondWithJSON(ctx *fasthttp.RequestCtx, code int, data interface{}) {
 	ctx.Response.Header.SetCanonical([]byte("Content-Type"), []byte("application/json"))
-	ctx.Response.SetStatusCode(200)
+	ctx.Response.SetStatusCode(code)
 
 	if err := json.NewEncoder(ctx).Encode(data); err != nil {
 		logrus.Errorf("Failed to build json, err: %v", err)
