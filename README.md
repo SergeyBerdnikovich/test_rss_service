@@ -7,7 +7,9 @@ Run <code>make run</code>
 <h2>Endpoints:</h2>
 1) GET <code>/rss_feeds_items</code>
 </br>
-where url params: <code>array of urls</code>
+where url params: <code>array of urls with key "urls"</code>
+</br>
+header is jwt token: <code>Token: ...</code>
 </br>
 and response is JSON with array of items and errors messages if they are axists
 </br>
@@ -28,5 +30,18 @@ and response is JSON with array of items and errors messages if they are axists
         ...
     ],
     errors: "Error message 1, error message 2, ..."
+}
+</pre>
+2) POST <code>/authenticate</code>
+</br>
+where body params: <code>login</code> and <code>password</code>
+</br>
+and response is JSON with login and jwt token or error message in case of wrong credentials
+</br>
+<h4>Response structure example:</h4>
+<pre>
+{
+    "login" => "TestRssApp",
+    "token" => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODkyNzkwMDksImxvZ2luIjoiVGVzdFJzc0FwcCJ9.Qo2e_7IdxBBJVG76yEoH91cBdoIMErA4gFTp4bu2Hw4"
 }
 </pre>
