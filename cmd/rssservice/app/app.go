@@ -18,6 +18,9 @@ func (a app) Run() {
 	router := initializeRouter()
 	logrus.Infof("Server started, listening on %v port", servicePort())
 
+	initializeMQServices()
+	defer closeMQServices()()
+
 	err := fasthttp.ListenAndServe(":"+servicePort(), router.Handler)
 	logrus.Errorf("Could not run server: %v", err)
 }
